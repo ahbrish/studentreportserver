@@ -8,28 +8,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-// this class listens for requests and responses
-// single responsibility, this class is only responsible for receiving a request and sending back a response
 @RestController
-@RequestMapping("/student") // where to reach this controller at
+@RequestMapping("/student")
 public class StudentController {
 
     private StudentService service;
 
     @Autowired
-    public StudentController(StudentService studentService){ // the service will handel what to do with the student data
+    public StudentController(StudentService studentService){
         this.service = studentService;
     }
 
-
-    // to receive a post request and process it use the spring annotation post-mapping
-    @PostMapping  // to create a student
+    @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
         Student result  = this.service.createStudent(student);
         ResponseEntity response = new ResponseEntity(result, HttpStatus.CREATED);
         return response;
-//        return new ResponseEntity<Student>(result, HttpStatus.CREATED);
-
     }
 
     @GetMapping("/{id}")

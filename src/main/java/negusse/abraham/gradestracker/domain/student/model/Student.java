@@ -7,11 +7,11 @@ import java.util.List;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // automatic generation of id
-    private Integer id; // primary identifier for a Student Object in the DataBase
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL) // when saving to a DB this one Student record could have a reference to multiple tests score records in another DB table
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TestScore> scores;
 
     public Student() {

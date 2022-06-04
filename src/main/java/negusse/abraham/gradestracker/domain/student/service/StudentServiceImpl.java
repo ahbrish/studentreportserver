@@ -11,8 +11,6 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService{
 
     private StudentRepo repo;
-    // the same way the controller has access to the service class,
-    // this service class needs access to the repo so inject the studentRepo class
 
     public StudentServiceImpl(StudentRepo studentRepo){
         this.repo = studentRepo;
